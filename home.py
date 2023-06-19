@@ -79,7 +79,7 @@ if text_search:
             st.markdown(f"*{row['title'].strip()}*")
             #st.markdown(f"**{row['url']}**")
             #st.markdown(f"[![image]({image_link})]({link})")
-            markdown = f"<a href="{link}" target="_blank"><img src="{image_link}" alt="Click me" width="100%" /></a>"
+            markdown = f'<a href="{link}" target="_blank"><img src="{image_link}" alt="Click me" width="100%" /></a>'
             st.markdown(markdown, unsafe_allow_html=True)
 
             
