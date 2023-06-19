@@ -37,8 +37,12 @@ if type_for != format_options[0]:
         #st.write(res_df)
 
         listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
-        mat = df['author'].apply(lambda x: any(w in x for w in keyword_list))
-        st.write(mat)
+        pattern = r"(?=.*\b" + r"\b)(?=.*\b".join(keyword_list) + r"\b)"
+        result = df['author'].str.contains(pattern, regex=True)
+        #mat = df['author'].apply(lambda x: any(w in x for w in keyword_list))
+        #mat = 
+        st.write(keyword_list)
+        st.write(result)
 
 #for col in search_opt:
 #        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
