@@ -10,7 +10,7 @@ st.title("Python Talks Search Engine")
 sheet_id = "1mdvsYlPVQ0Tda35frF1zoznq9TFtOWe0dKkgWDJkiS0"
 sheet_name = "bibliograph"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-df = pd.read_csv(url, dtype=str)
+df = pd.read_csv(url, dtype=str, header=0)
 #df = df.sort_values('biblio_id', ascending=False, ignore_index=True)
 
 # Show the dataframe (we'll delete this later)
