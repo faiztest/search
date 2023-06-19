@@ -23,6 +23,7 @@ text_search = c1.text_input("Search by author, title, or full-text. Separate con
 text_search = unidecode(text_search.lower())
 # Get keywords from search bar
 keyword_list = [keyword.strip() for keyword in text_search.split(";")]
+st.write(keyword_list)
 # Add options
 format_options = ["All", "Buku Ketenaganukliran", "Buku Non-ketenaganukliran", "Buku Pedoman", "Direktori, annual, yearbook", "Ensiklopedia", "Handbook & manual", "Jurnal", "Kamus", "Kerja Praktik", "Prosiding", "Terbitan Internal", "Tugas Akhir"]
 type_for = c2.selectbox("Type", format_options)
@@ -31,7 +32,7 @@ search_opt = c3.multiselect(
         ["author", "title", "full-text"],
         ["author", "title"])
 
-st.write(keyword_list)
+
 
 if type_for != format_options[0]:
         #res_df = df[df['gmd_id'].str.contains(type_for)]
