@@ -45,13 +45,16 @@ if keyword_list is not None:
         if type_for != format_options[0]:
             key_df = key_df[key_df['gmd_id'].str.contains(type_for)]
         
-        st.write(key_df)
-        
-        N_cards_per_col = 5
-        for n_row, row in key_df.iterrows():
-            i = n_row%N_cards_per_col
-            if i==0:
-                st.write("")
-                cols = st.columns(N_cards_per_col, gap="large")
-            create_card(row, cols[n_row%N_cards_per_col])
-        
+N_cards_per_row = 3
+if text_search:
+    for n_row, row in key_df.reset_index().iterrows():
+        i = n_row%N_cards_per_row
+        if i==0:
+            st.write("---")
+            cols = st.columns(N_cards_per_row, gap="large")
+        # draw the card
+        with cols[n_row%N_cards_per_row]:
+            st.caption(f"{row['gmd_id'].strip()} - {row['year'].strip()} ")
+            st.markdown(f"**{row['author'].strip()}**")
+            st.markdown(f"*{row['title'].strip()}*")
+            st.markdown(f"**{row['url']}**")
