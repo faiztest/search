@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import re
-from func import *
 
 st.set_page_config(page_title="Pencarian Terpadu", page_icon="https://digilib.polteknuklir.ac.id/perpus/images/default/logo.png", 
                 layout="wide", initial_sidebar_state="expanded")
