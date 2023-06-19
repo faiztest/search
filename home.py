@@ -28,7 +28,7 @@ image_dict = {
   "Kamus": "https://github.com/faizhalas/Search4All/blob/main/images/kamus.png?raw=true",
   "Kerja Praktik": "https://github.com/faizhalas/Search4All/blob/main/images/kp.png?raw=true",
   "Prosiding": "https://github.com/faizhalas/Search4All/blob/main/images/pros.png?raw=true",
-  "Terbitan Internal": "https://github.com/faizhalas/Search4All/blob/main/images/ti.png?raw=true"
+  "Terbitan Internal": "https://github.com/faizhalas/Search4All/blob/main/images/ti.png?raw=true",
   "Tugas Akhir": "https://github.com/faizhalas/Search4All/blob/main/images/ta.png?raw=true"
 }
 
