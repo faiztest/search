@@ -33,26 +33,23 @@ search_opt = c3.multiselect(
         ["author", "title", "full-text"],
         ["author", "title"])
 
-
-
-if type_for != format_options[0]:
-        res_df = df[df['gmd_id'].str.contains(type_for)]
-        #st.write(res_df)
-
 if keyword_list is not None:        
-        #listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
-        conditons = [df['author'].str.contains(word) for word in keyword_list]
-        #filtered_df = df[np.logical_and.reduce(conditons)]
-        #pattern = r"(?=.*\b" + r"\b)(?=.*\b".join(keyword_list) + r"\b)"
-        #result = df['author'].str.contains(pattern, regex=True)
-        #mat = df['author'].apply(lambda x: any(w in x for w in keyword_list))
-        #mat = df[df['author'].str.contains(keyword_list)]
-        
-        #match
-        jadi = df[df['author'].isin(keyword_list)]
-       
-        st.write(jadi)
+        key_df = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
+        patterns = [r'\b{}\b'.format(re.escape(word)) for word in keyword_list]
 
+        for col in columns:
+            conditions = [df[col].str.contains(pattern, regex=True, flags=re.IGNORECASE) for pattern in patterns]
+            column_result = df[np.logical_and.reduce(conditions)]
+            key_df = pd.concat([key_df, column_result])
+
+        st.write(key_df)
+        
+if type_for != format_options[0]:
+        res_df = key_df[key_df['gmd_id'].str.contains(type_for)]
+        st.write(res_df)
+        
+        
+        
 #for col in search_opt:
 #        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
 #        listmat.append(mat)
