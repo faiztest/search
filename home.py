@@ -47,8 +47,11 @@ if keyword_list is not None:
         #result = df['author'].str.contains(pattern, regex=True)
         #mat = df['author'].apply(lambda x: any(w in x for w in keyword_list))
         #mat = df[df['author'].str.contains(keyword_list)]
+        
+        #match
+        jadi = df[df['author'].isin(keyword_list)]
        
-        st.write(conditons)
+        st.write(jadi)
 
 #for col in search_opt:
 #        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
