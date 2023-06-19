@@ -26,7 +26,6 @@ keyword_list = [keyword.strip() for keyword in text_search.split(";")]
 # Add options
 format_options = ["All", "Buku Ketenaganukliran", "Buku Non-ketenaganukliran", "Buku Pedoman", "Direktori, annual, yearbook", "Ensiklopedia", "Handbook & manual", "Jurnal", "Kamus", "Kerja Praktik", "Prosiding", "Terbitan Internal", "Tugas Akhir"]
 type_for = c2.selectbox("Type", format_options)
-#c3.markdown(""); c3.markdown(""); 
 search_opt = c3.multiselect(
         "Search fields",
         ["author", "title", "full-text"],
@@ -36,12 +35,12 @@ if type_for != format_options[0]:
         res_df = df.loc[df['gmd_id'].isin(format_options)]       
         st.write(res_df)
 
-listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
-for col in search_opt:
-        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
-        listmat.append(mat)
+#listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
+#for col in search_opt:
+#        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
+#        listmat.append(mat)
 
 
 
 # Show the dataframe (we'll delete this later)
-st.write(listmat)
+#st.write(listmat)
