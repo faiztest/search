@@ -1,6 +1,6 @@
 import streamlit as st
 
-image_dict = defaultdict(lambda: "https://github.com/faizhalas/Search4All/blob/main/images/perpus.png?raw=true")
+#image_dict = defaultdict(lambda: "https://github.com/faizhalas/Search4All/blob/main/images/perpus.png?raw=true")
 image_dict["Buku Ketenaganukliran"] = "https://github.com/faizhalas/Search4All/blob/main/images/bnuklir.png?raw=true"
 image_dict["Buku Non-ketenaganukliran"] = "https://github.com/faizhalas/Search4All/blob/main/images/bnonnuklir.png?raw=true"
 image_dict["Buku Pedoman"] = "https://github.com/faizhalas/Search4All/blob/main/images/pedoman.png?raw=true"
