@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import re
+from func import *
 
 # Page setup
 st.set_page_config(page_title="Python Talks Search Engine", page_icon="🐍", layout="wide")
