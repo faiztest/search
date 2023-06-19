@@ -25,7 +25,6 @@ text_search = unidecode(text_search.lower())
 # Get keywords from search bar
 keyword_list = [keyword.strip() for keyword in text_search.split(";")]
 st.write(keyword_list)
-st.write(type(keyword_list))
 # Add options
 format_options = ["All", "Buku Ketenaganukliran", "Buku Non-ketenaganukliran", "Buku Pedoman", "Direktori, annual, yearbook", "Ensiklopedia", "Handbook & manual", "Jurnal", "Kamus", "Kerja Praktik", "Prosiding", "Terbitan Internal", "Tugas Akhir"]
 type_for = c2.selectbox("Type", format_options)
@@ -42,14 +41,15 @@ if type_for != format_options[0]:
 
 if keyword_list is not None:        
         #listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
-        conditons = [df['author'].str.contains(word) for word in keyword_list]
-        filtered_df = df[np.logical_and.reduce(conditons)]
-        #pattern = r"(?=.*\b" + r"\b)(?=.*\b".join(keyword_list) + r"\b)"
-        #result = df['author'].str.contains(pattern, regex=True)
+        #conditons = [df['author'].str.contains(word) for word in keyword_list]
+        #filtered_df = df[np.logical_and.reduce(conditons)]
+        pattern = r"(?=.*\b" + r"\b)(?=.*\b".join(keyword_list) + r"\b)"
+        result = df['author'].str.contains(pattern, regex=True)
         #mat = df['author'].apply(lambda x: any(w in x for w in keyword_list))
         #mat = df[df['author'].str.contains(keyword_list)]
        
-        st.write(filtered_df)
+        st.write(type(result))
+        st.write(result)
 
 #for col in search_opt:
 #        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
