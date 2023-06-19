@@ -34,7 +34,7 @@ image_dict = {
 st.title('Search4All: Recorded materials')
 # Intro text
 st.caption(f"Discover and learn among the more than **{df.shape[0]}** sources available from Search4All.")
-c1, c2, c3 = st.columns([6,1,3])
+c1, c2, c3 = st.columns([5,2,3])
 # The search bar
 text_search = c1.text_input("Search by author, title, or full-text. Separate concepts by semicolons (;)")
 # Get keywords from search bar
