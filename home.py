@@ -46,15 +46,11 @@ if keyword_list is not None:
         
         st.write(key_df)
         
-
+        N_cards_per_row = 5
+        for n_row, row in df_search.iterrows():
+            i = n_row%N_cards_per_col
+            if i==0:
+                st.write("")
+                cols = st.columns(N_cards_per_col, gap="large")
+            create_card(row, cols[n_row%N_cards_per_col])
         
-        
-        
-#for col in search_opt:
-#        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
-#        listmat.append(mat)
-
-
-
-# Show the dataframe (we'll delete this later)
-#st.write(listmat)
