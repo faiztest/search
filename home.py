@@ -38,16 +38,18 @@ if keyword_list is not None:
         key_df = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
         patterns = [r'\b{}\b'.format(re.escape(word)) for word in keyword_list]
 
-        for col in columns:
+        for col in search_opt:
             conditions = [df[col].str.contains(pattern, regex=True, flags=re.IGNORECASE) for pattern in patterns]
             column_result = df[np.logical_and.reduce(conditions)]
             key_df = pd.concat([key_df, column_result])
 
-        st.write(key_df)
-        
-if type_for != format_options[0]:
-        res_df = key_df[key_df['gmd_id'].str.contains(type_for)]
+        if type_for != format_options[0]:
+                res_df = key_df[key_df['gmd_id'].str.contains(type_for)]
+        else res_df = key_df
         st.write(res_df)
+        #st.write(key_df)
+        
+
         
         
         
