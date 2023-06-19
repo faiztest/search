@@ -32,11 +32,16 @@ search_opt = c3.multiselect(
         ["author", "title", "full-text"],
         ["author", "title"])
 
+if type_sel != talk_options[0]:
+        res_df = df.loc[df['gmd_id'].isin(format_options)]
+       
+st.write(res_df)
+
 listmat = None
 for col in search_opt:
-        mat = df[col].apply(lambda x: any(w in x for w in keyword_list))
+        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
         listmat.append(mat)
-return listmat
+
 
 
 # Show the dataframe (we'll delete this later)
