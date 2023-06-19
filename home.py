@@ -48,7 +48,6 @@ if keyword_list is not None:
         #mat = df['author'].apply(lambda x: any(w in x for w in keyword_list))
         #mat = df[df['author'].str.contains(keyword_list)]
        
-        st.write(type(result))
         st.write(result)
 
 #for col in search_opt:
