@@ -37,9 +37,12 @@ if type_for != format_options[0]:
         #st.write(res_df)
 
 listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
-for col in search_opt:
-        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
-        listmat.append(mat)
+mat = res_df[author].apply(lambda x: any(w in x for w in keyword_list))
+st.write(mat)
+
+#for col in search_opt:
+#        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
+#        listmat.append(mat)
 
 
 
