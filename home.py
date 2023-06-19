@@ -32,11 +32,10 @@ search_opt = c3.multiselect(
         ["author", "title"])
 
 if type_for != format_options[0]:
-        #res_df = df.loc[df['gmd_id'].isin(type_for)]
-        res_df = df[df['gmd_id'].str.contains(type_for)]
+        #res_df = df[df['gmd_id'].str.contains(type_for)]
         #st.write(res_df)
 
-        listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
+        #listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
         pattern = r"(?=.*\b" + r"\b)(?=.*\b".join(keyword_list) + r"\b)"
         result = df['author'].str.contains(pattern, regex=True)
         #mat = df['author'].apply(lambda x: any(w in x for w in keyword_list))
