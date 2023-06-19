@@ -32,7 +32,8 @@ search_opt = c3.multiselect(
         ["author", "title"])
 
 if type_for != format_options[0]:
-        res_df = df.loc[df['gmd_id'].isin(format_options)]       
+        res_df = df.loc[df['gmd_id'].isin(type_for)]
+        #res_df = df[df['gmd_id'].str.contains("Spark")]
         st.write(res_df)
 
 #listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
