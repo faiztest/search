@@ -14,6 +14,8 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sh
 df = pd.read_csv(url, dtype=str, header=0)
 df = df.sort_index(ascending=False).fillna('NaN')
 
+st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
+
 st.title('Search4All: Recorded materials')
 # Intro text
 st.caption(f"Discover and learn among the more than **{df.shape[0]}** sources available from Search4All.")
@@ -42,8 +44,7 @@ if keyword_list is not None:
         if type_for != format_options[0]:
             key_df = key_df[key_df['gmd_id'].str.contains(type_for)]
         
-N_cards_per_row = 5
-N_cards_per_col = 5
+N_cards_per_row = 4
 if text_search:
     for n_row, row in key_df.reset_index().iterrows():
         i = n_row%N_cards_per_row
