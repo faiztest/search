@@ -14,7 +14,7 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sh
 df = pd.read_csv(url, dtype=str, header=0)
 df = df.sort_index(ascending=False).fillna('NaN')
 
-st.markdown("![Foo](http://www.google.com.au/images/nav_logo7.png)(http://google.com.au/)")
+st.markdown("(![Foo](http://www.google.com.au/images/nav_logo7.png))(http://google.com.au/)")
 
 #==imgdict
 image_dict = {
@@ -80,3 +80,5 @@ if text_search:
             #st.markdown(f"![image]()({link})")
             
             st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
+            st.markdown("![img](https://studymachinelearning.com/wp-content/uploads/2019/09/stemmin_lemm_ex-1.png)")
+            
