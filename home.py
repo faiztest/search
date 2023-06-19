@@ -71,14 +71,13 @@ if text_search:
         #get image
         link = row["url"].strip()
         gmd_id = row["gmd_id"].strip()
+        image_link = image_dict[gmd_id]
         # draw the card
         with cols[n_row%N_cards_per_row]:
             st.caption(f"{row['gmd_id'].strip()} - {row['year'].strip()} ")
             st.markdown(f"**{row['author'].strip()}**")
             st.markdown(f"*{row['title'].strip()}*")
             #st.markdown(f"**{row['url']}**")
-            #st.markdown(f"![image]()({link})")
+            st.markdown(f"[![image]({image_link})]({link})")
             
-            st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
-            st.markdown("![img](https://studymachinelearning.com/wp-content/uploads/2019/09/stemmin_lemm_ex-1.png)")
-            
+            #st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
