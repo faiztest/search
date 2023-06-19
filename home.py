@@ -33,9 +33,8 @@ search_opt = c3.multiselect(
         ["author", "title"])
 
 if type_for != format_options[0]:
-        res_df = df.loc[df['gmd_id'].isin(format_options)]
-       
-st.write(res_df)
+        res_df = df.loc[df['gmd_id'].isin(format_options)]       
+        st.write(res_df)
 
 listmat = None
 for col in search_opt:
