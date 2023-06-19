@@ -43,8 +43,8 @@ if keyword_list is not None:
             column_result = df[np.logical_and.reduce(conditions)]
             key_df = pd.concat([key_df, column_result])
 
-        #if type_for != format_options[0]:
-               # key_df = key_df[key_df['gmd_id'].str.contains(type_for)]
+        if type_for != format_options[0]:
+            key_df = key_df[key_df['gmd_id'].str.contains(type_for)]
         
         st.write(key_df)
         
