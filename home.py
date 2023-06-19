@@ -32,7 +32,7 @@ search_opt = c3.multiselect(
         ["author", "title", "full-text"],
         ["author", "title"])
 
-if type_sel != talk_options[0]:
+if type_for != format_options[0]:
         res_df = df.loc[df['gmd_id'].isin(format_options)]
        
 st.write(res_df)
