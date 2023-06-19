@@ -51,8 +51,9 @@ if text_search:
             st.write("---")
             cols = st.columns(N_cards_per_row, gap="large")
         # draw the card
-        with cols[n_row%N_cards_per_row]:
-            st.caption(f"{row['gmd_id'].strip()} - {row['year'].strip()} ")
-            st.markdown(f"**{row['author'].strip()}**")
-            st.markdown(f"*{row['title'].strip()}*")
-            st.markdown(f"**{row['url']}**")
+        create_card(row, cols[n_row%N_cards_per_col])
+        #with cols[n_row%N_cards_per_row]:
+            #st.caption(f"{row['gmd_id'].strip()} - {row['year'].strip()} ")
+            #st.markdown(f"**{row['author'].strip()}**")
+            #st.markdown(f"*{row['title'].strip()}*")
+            #st.markdown(f"**{row['url']}**")
