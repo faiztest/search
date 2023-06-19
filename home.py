@@ -36,9 +36,9 @@ if type_for != format_options[0]:
         res_df = df[df['gmd_id'].str.contains(type_for)]
         #st.write(res_df)
 
-listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
-mat = res_df[author].apply(lambda x: any(w in x for w in keyword_list))
-st.write(mat)
+        listmat = pd.DataFrame(columns=['biblio_id', 'url', 'gmd_id', 'title', 'author', 'year', 'callnum', 'full-text'])
+        mat = res_df[author].apply(lambda x: any(w in x for w in keyword_list))
+        st.write(mat)
 
 #for col in search_opt:
 #        mat = res_df[col].apply(lambda x: any(w in x for w in keyword_list))
