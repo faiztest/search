@@ -14,12 +14,6 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sh
 df = pd.read_csv(url, dtype=str, header=0)
 df = df.sort_index(ascending=False)
 
-# Show the dataframe (we'll delete this later)
-st.write(df)
-
-# Use a text_input to get the keywords to filter the dataframe
-text_search = st.text_input("Search videos by title or speaker", value="")
-
 st.title('Search4All: Recorded materials')
 # Intro text
 st.caption(f"Discover and learn among the more than **{df.shape[0]}** sources available from Search4All.")
@@ -37,3 +31,13 @@ search_opt = c3.multiselect(
         "Search fields",
         ["author", "title", "full-text"],
         ["author", "title"])
+
+listmat = None
+for col in search_opt:
+        mat = df[col].apply(lambda x: any(w in x for w in keyword_list))
+        listmat.append(mat)
+return listmat
+
+
+# Show the dataframe (we'll delete this later)
+st.write(listmat)
