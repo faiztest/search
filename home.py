@@ -79,7 +79,8 @@ if text_search:
             st.markdown(f"*{row['title'].strip()}*")
             #st.markdown(f"**{row['url']}**")
             #st.markdown(f"[![image]({image_link})]({link})")
-            st.markdown(f"<a href="{link}" target="_blank"><img src="{image_link}" width="100%"/></a>, unsafe_allow_html=True)
+            markdown = f"<a href="{link}" target="_blank"><img src="{image_link}" alt="Click me" width="100%" /></a>"
+            st.markdown(markdown, unsafe_allow_html=True)
 
             
             #st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
