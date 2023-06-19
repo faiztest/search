@@ -14,7 +14,23 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sh
 df = pd.read_csv(url, dtype=str, header=0)
 df = df.sort_index(ascending=False).fillna('NaN')
 
-st.markdown("[[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
+st.markdown("![Foo](http://www.google.com.au/images/nav_logo7.png)(http://google.com.au/)")
+
+#==imgdict
+image_dict = {
+  "Buku Ketenaganukliran" : "https://github.com/faizhalas/Search4All/blob/main/images/bnuklir.png?raw=true",
+  "Buku Non-ketenaganukliran" : "https://github.com/faizhalas/Search4All/blob/main/images/bnonnuklir.png?raw=true",
+  "Buku Pedoman" : "https://github.com/faizhalas/Search4All/blob/main/images/pedoman.png?raw=true",
+  "Direktori, annual, yearbook" : "https://github.com/faizhalas/Search4All/blob/main/images/diranuyear.png?raw=true",
+  "Ensiklopedia" : "https://github.com/faizhalas/Search4All/blob/main/images/ensiklopedia.png?raw=true",
+  "Handbook & manual" : "https://github.com/faizhalas/Search4All/blob/main/images/hanmanu.png?raw=true",
+  "Jurnal" : "https://github.com/faizhalas/Search4All/blob/main/images/jurnal.png?raw=true",
+  "Kamus" : "https://github.com/faizhalas/Search4All/blob/main/images/kamus.png?raw=true",
+  "Kerja Praktik" : "https://github.com/faizhalas/Search4All/blob/main/images/kp.png?raw=true",
+  "Prosiding" : "https://github.com/faizhalas/Search4All/blob/main/images/pros.png?raw=true",
+  "Terbitan Internal" : "https://github.com/faizhalas/Search4All/blob/main/images/ti.png?raw=true"
+  "Tugas Akhir" : "https://github.com/faizhalas/Search4All/blob/main/images/ta.png?raw=true"}
+
 
 st.title('Search4All: Recorded materials')
 # Intro text
@@ -51,9 +67,15 @@ if text_search:
         if i==0:
             st.write("---")
             cols = st.columns(N_cards_per_row, gap="large")
+        #get image
+        link = row["url"].strip()
+        gmd_id = row["gmd_id"].strip()
         # draw the card
         with cols[n_row%N_cards_per_row]:
             st.caption(f"{row['gmd_id'].strip()} - {row['year'].strip()} ")
             st.markdown(f"**{row['author'].strip()}**")
             st.markdown(f"*{row['title'].strip()}*")
-            st.markdown(f"**{row['url']}**")
+            #st.markdown(f"**{row['url']}**")
+            #st.markdown(f"![image]()({link})")
+            
+            st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
