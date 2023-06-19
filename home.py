@@ -5,10 +5,6 @@ import numpy as np
 import re
 from func import *
 
-# Page setup
-st.set_page_config(page_title="Python Talks Search Engine", page_icon="🐍", layout="wide")
-st.title("Python Talks Search Engine")
-
 # Connect to the Google Sheet
 sheet_id = "1mdvsYlPVQ0Tda35frF1zoznq9TFtOWe0dKkgWDJkiS0"
 sheet_name = "bibliograph"
@@ -44,7 +40,7 @@ if keyword_list is not None:
         if type_for != format_options[0]:
             key_df = key_df[key_df['gmd_id'].str.contains(type_for)]
         
-N_cards_per_row = 3
+N_cards_per_row = 5
 if text_search:
     for n_row, row in key_df.reset_index().iterrows():
         i = n_row%N_cards_per_row
