@@ -29,7 +29,8 @@ image_dict = {
   "Kerja Praktik" : "https://github.com/faizhalas/Search4All/blob/main/images/kp.png?raw=true",
   "Prosiding" : "https://github.com/faizhalas/Search4All/blob/main/images/pros.png?raw=true",
   "Terbitan Internal" : "https://github.com/faizhalas/Search4All/blob/main/images/ti.png?raw=true"
-  "Tugas Akhir" : "https://github.com/faizhalas/Search4All/blob/main/images/ta.png?raw=true"}
+  "Tugas Akhir" : "https://github.com/faizhalas/Search4All/blob/main/images/ta.png?raw=true"
+}
 
 
 st.title('Search4All: Recorded materials')
