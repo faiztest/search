@@ -48,7 +48,7 @@ if keyword_list is not None:
         st.write(key_df)
         
         N_cards_per_row = 5
-        for n_row, row in df_search.iterrows():
+        for n_row, row in key_df.iterrows():
             i = n_row%N_cards_per_col
             if i==0:
                 st.write("")
