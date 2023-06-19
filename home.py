@@ -31,6 +31,8 @@ search_opt = c3.multiselect(
         ["author", "title", "full-text"],
         ["author", "title"])
 
+st.write(keyword_list)
+
 if type_for != format_options[0]:
         #res_df = df[df['gmd_id'].str.contains(type_for)]
         #st.write(res_df)
@@ -40,7 +42,7 @@ if type_for != format_options[0]:
         result = df['author'].str.contains(pattern, regex=True)
         #mat = df['author'].apply(lambda x: any(w in x for w in keyword_list))
         #mat = 
-        st.write(keyword_list)
+       
         st.write(result)
 
 #for col in search_opt:
