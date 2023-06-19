@@ -14,8 +14,6 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sh
 df = pd.read_csv(url, dtype=str, header=0)
 df = df.sort_index(ascending=False).fillna('NaN')
 
-st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
-
 #==imgdict
 image_dict = {
   "Buku Ketenaganukliran": "https://github.com/faizhalas/Search4All/blob/main/images/bnuklir.png?raw=true",
@@ -75,12 +73,9 @@ if text_search:
         # draw the card
         with cols[n_row%N_cards_per_row]:
             st.caption(f"{row['gmd_id'].strip()} - {row['year'].strip()} ")
-            st.markdown(f"**{row['author'].strip()}**")
-            st.markdown(f"*{row['title'].strip()}*")
-            #st.markdown(f"**{row['url']}**")
-            #st.markdown(f"[![image]({image_link})]({link})")
             markdown = f'<a href="{link}" target="_blank"><img src="{image_link}" alt="Click me" width="100%" /></a>'
             st.markdown(markdown, unsafe_allow_html=True)
-
+            st.markdown(f"**{row['author'].strip()}**")
+            st.markdown(f"*{row['title'].strip()}*")
             
             #st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
