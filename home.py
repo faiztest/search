@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import re
-from unidecode import unidecode
 
 # Page setup
 st.set_page_config(page_title="Python Talks Search Engine", page_icon="🐍", layout="wide")
@@ -14,7 +13,7 @@ sheet_id = "1mdvsYlPVQ0Tda35frF1zoznq9TFtOWe0dKkgWDJkiS0"
 sheet_name = "bibliograph"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 df = pd.read_csv(url, dtype=str, header=0)
-df = df.sort_index(ascending=False)
+df = df.sort_index(ascending=False).fillna('NaN')
 
 st.title('Search4All: Recorded materials')
 # Intro text
@@ -22,7 +21,6 @@ st.caption(f"Discover and learn among the more than **{df.shape[0]}** sources av
 c1, c2, c3 = st.columns([6,1,3])
 # The search bar
 text_search = c1.text_input("Search by author, title, or full-text. Separate concepts by semicolons (;)")
-#text_search = unidecode(text_search.lower())
 # Get keywords from search bar
 keyword_list = [keyword.strip() for keyword in text_search.split(";")]
 st.write(keyword_list)
