@@ -1,3 +1,17 @@
+image_dict = defaultdict(lambda: "https://github.com/faizhalas/Search4All/blob/main/images/perpus.png?raw=true")
+image_dict["Buku Ketenaganukliran"] = "https://github.com/faizhalas/Search4All/blob/main/images/bnuklir.png?raw=true"
+image_dict["Buku Non-ketenaganukliran"] = "https://github.com/faizhalas/Search4All/blob/main/images/bnonnuklir.png?raw=true"
+image_dict["Buku Pedoman"] = "https://github.com/faizhalas/Search4All/blob/main/images/pedoman.png?raw=true"
+image_dict["Direktori, annual, yearbook"] = "https://github.com/faizhalas/Search4All/blob/main/images/diranuyear.png?raw=true"
+image_dict["Ensiklopedia"] = "https://github.com/faizhalas/Search4All/blob/main/images/ensiklopedia.png?raw=true"
+image_dict["Handbook & manual"] = "https://github.com/faizhalas/Search4All/blob/main/images/hanmanu.png?raw=true"
+image_dict["Jurnal"] = "https://github.com/faizhalas/Search4All/blob/main/images/jurnal.png?raw=true"
+image_dict["Kamus"] = "https://github.com/faizhalas/Search4All/blob/main/images/kamus.png?raw=true"
+image_dict["Kerja Praktik"] = "https://github.com/faizhalas/Search4All/blob/main/images/kp.png?raw=true"
+image_dict["Prosiding"] = "https://github.com/faizhalas/Search4All/blob/main/images/pros.png?raw=true"
+image_dict["Terbitan Internal"] = "https://github.com/faizhalas/Search4All/blob/main/images/ti.png?raw=true"
+image_dict["Tugas Akhir"] = "https://github.com/faizhalas/Search4All/blob/main/images/ta.png?raw=true"
+
 def create_card(row, c):
     link = row["url"].strip()
     pict = row["gmd_id"].strip()
