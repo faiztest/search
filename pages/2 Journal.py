@@ -6,8 +6,6 @@ def cache_clear():
 
 @st.cache_data
 def main(uploaded_file):
-    st.title("PDF to Text Converter")
-
     if uploaded_file is not None:
         with pdfplumber.open(uploaded_file) as pdf:
             text = ""
@@ -17,6 +15,7 @@ def main(uploaded_file):
         st.subheader("Extracted Text")
         st.text_area("Text", value=text, height=400)
 
+st.title("PDF to Text Converter")
 st.header("Upload PDF File")
 uploaded_file = st.file_uploader("Choose a file", type=['pdf'], on_change=cache_clear)
 
