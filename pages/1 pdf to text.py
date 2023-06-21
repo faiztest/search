@@ -4,7 +4,7 @@ import pdfplumber
 def cache_clear():
     st.cache_data.clear()
 
-@st.cache_data(show_spinner=False, allow_output_mutation=True)
+@st.cache_data(experimental_allow_widgets=True)
 def convert(uploaded_files):
     results = []
     for file in uploaded_files:
