@@ -5,7 +5,7 @@ def cache_clear():
     st.cache_data.clear()
 
 @st.cache_data(experimental_allow_widgets=True)
-def main(uploaded_file):
+def convert(uploaded_file):
 
     if uploaded_file is not None:
         with pdfplumber.open(uploaded_file) as pdf:
@@ -22,4 +22,4 @@ uploaded_file = st.file_uploader("Choose a file", type=['pdf'], on_change=cache_
 
 if uploaded_file is not None:
     st.subheader("Extracted Text")
-    main(uploaded_file)
+    convert(uploaded_file)
