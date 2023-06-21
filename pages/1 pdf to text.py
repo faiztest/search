@@ -1,52 +1,28 @@
 import streamlit as st
-import PyPDF2
-import pandas as pd
-import os
-import tempfile
+import pdfplumber
 
-# === config ===
-st.set_page_config(
-    page_title="Pencarian Terpadu",
-    page_icon="https://digilib.polteknuklir.ac.id/perpus/images/default/logo.png",
-    layout="wide"
-)
-
-def reset_data():
+def cache_clear():
     st.cache_data.clear()
 
-def convert_pdf_to_text(file_path):
-    text = ""
-    with open(file_path, 'rb') as file:
-        reader = PyPDF2.PdfFileReader(file)
-        num_pages = reader.numPages
-        for page_num in range(num_pages):
-            page = reader.getPage(page_num)
-            text += page.extractText()
-    return text
-
-def main():
-    if uploaded_file is not None:
-        file_name = uploaded_file.name
-
-        # Save uploaded file to a temporary location
-        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-            temp_path = temp_file.name
-            temp_file.write(uploaded_file.getbuffer())
-        
-        text = convert_pdf_to_text(temp_path)
-
-        data = [{"File Name": file_name, "Text": text}]
-        df = pd.DataFrame(data)
-        st.subheader("Extracted Text")
-        st.dataframe(df)
-
-        # Remove the temporary file
-        os.remove(temp_path)
+@st.cache_data(show_spinner=False, allow_output_mutation=True)
+def convert(uploaded_files):
+    results = []
+    for file in uploaded_files:
+        with pdfplumber.open(file) as pdf:
+            text = ""
+            for page in pdf.pages:
+                text += page.extract_text()
+        results.append(text)
+    return results
 
 st.title("PDF to Text Converter")
-st.header("Upload PDF File")
+st.header("Upload PDF Files")
 
-uploaded_file = st.file_uploader("Choose a file", type=['pdf'], on_change=reset_data)
+uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_files=True, on_change=cache_clear)
 
-if uploaded_file is not None:
-    main()
+if uploaded_files is not None:
+    st.subheader("Extracted Text")
+    extracted_texts = convert(uploaded_files)
+    for i, text in enumerate(extracted_texts):
+        st.subheader(f"Text from File {i+1}")
+        st.text_area(f"Text {i+1}", value=text, height=400)
