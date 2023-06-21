@@ -25,6 +25,8 @@ def convert_pdf_to_text(file_path):
     
 @st.cache_data
 def main():
+    st.title("PDF to Text Converter")
+
     if uploaded_files:
         data = []
         for file in uploaded_files:
@@ -39,4 +41,5 @@ def main():
 st.title("PDF to Text Converter")
 st.header("Upload PDF Files")
 uploaded_file = st.file_uploader("Upload one or more PDF files", accept_multiple_files=True, on_change=reset_data)
-main()
+if uploaded_files:
+        main()
