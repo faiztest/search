@@ -22,7 +22,7 @@ def convert_pdf_to_text(file_path):
             text += page.extractText()
     return text
 
-def main():
+def main(uploaded_files):
     if uploaded_files:
         data = []
         for file in uploaded_files:
@@ -38,4 +38,4 @@ st.title("PDF to Text Converter")
 st.header("Upload PDF Files")
 uploaded_file = st.file_uploader("Upload one or more PDF files", accept_multiple_files=True, on_change=reset_data)
 if uploaded_files:
-        main()
+        main(uploaded_files)
