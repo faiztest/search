@@ -24,5 +24,6 @@ if uploaded_files is not None:
     st.subheader("Extracted Text")
     extracted_texts = convert(uploaded_files)
     for i, text in enumerate(extracted_texts):
-        st.subheader(f"Text from File {i+1}")
+        file_name = uploaded_files[i].name
+        st.subheader(file_name)
         st.text_area(f"Text {i+1}", value=text, height=400)
