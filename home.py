@@ -55,7 +55,7 @@ text_search = c1.text_input("Search by author, title, or full-text. Separate con
 keyword_list = [keyword.strip() for keyword in text_search.split(";")]
 
 # option to choose
-list_opt = ["author", "title", "annotation", "abstract", "introduction", "literature review", "methods", "discussion", "conclusion", "full-text"]
+list_opt = ["annotation", "author", "title", "abstract", "introduction", "literature review", "methods", "discussion", "conclusion", "full-text"]
 
 # Add options
 format_options = ["All", "Buku Ketenaganukliran", "Buku Non-ketenaganukliran", "Buku Pedoman", "Direktori, annual, yearbook", "Ensiklopedia", "Handbook & manual", "Jurnal", "Kamus", "Kerja Praktik", "Prosiding", "Terbitan Internal", "Tugas Akhir"]
@@ -68,7 +68,7 @@ if type_for == format_options[0]:
 elif type_for == "Tugas Akhir":
      search_opt = c3.multiselect(
              "Search fields",
-             list_opt[1:2,4:],
+             list_opt[1:],
              ["author", "title"])
 
 else:
