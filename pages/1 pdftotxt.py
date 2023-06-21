@@ -25,11 +25,6 @@ def convert_pdf_to_text(file_path):
     
 @st.cache_data
 def main():
-    st.title("PDF to Text Converter")
-
-    st.header("Upload PDF Files")
-    uploaded_files = st.file_uploader("Upload one or more PDF files", accept_multiple_files=True)
-
     if uploaded_files:
         data = []
         for file in uploaded_files:
@@ -41,6 +36,7 @@ def main():
         st.subheader("Extracted Text")
         st.dataframe(df)
         
-st.title('PDFs to Text')
-uploaded_file = st.file_uploader("Choose files", accept_multiple_files=True, on_change=reset_data)
+st.title("PDF to Text Converter")
+st.header("Upload PDF Files")
+uploaded_file = st.file_uploader("Upload one or more PDF files", accept_multiple_files=True, on_change=reset_data)
 main()
