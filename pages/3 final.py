@@ -25,4 +25,4 @@ if uploaded_files is not None:
     st.subheader("Extracted Text")
     extracted_data = convert(uploaded_files)
     df = pd.DataFrame(extracted_data)
-    st.dataframe(df)
+    st.data_editor(df)
