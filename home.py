@@ -53,12 +53,15 @@ text_search = c1.text_input("Search by author, title, or full-text. Separate con
 # Get keywords from search bar
 keyword_list = [keyword.strip() for keyword in text_search.split(";")]
 
+# option to choose
+non_journal = ["author", "title", "full-text"]
+
 # Add options
 format_options = ["All", "Buku Ketenaganukliran", "Buku Non-ketenaganukliran", "Buku Pedoman", "Direktori, annual, yearbook", "Ensiklopedia", "Handbook & manual", "Jurnal", "Kamus", "Kerja Praktik", "Prosiding", "Terbitan Internal", "Tugas Akhir"]
 type_for = c2.selectbox("Type", format_options)
 search_opt = c3.multiselect(
         "Search fields",
-        ["author", "title", "full-text"],
+        non_journal,
         ["author", "title"])
 
 # filter
