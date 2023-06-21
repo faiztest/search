@@ -37,5 +37,5 @@ def main(uploaded_files):
 st.title("PDF to Text Converter")
 st.header("Upload PDF Files")
 uploaded_file = st.file_uploader("Upload one or more PDF files", accept_multiple_files=True, on_change=reset_data)
-if uploaded_files:
+if uploaded_files is not None:
         main(uploaded_files)
