@@ -20,6 +20,7 @@ def connect_gsheet():
   url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
   df = pd.read_csv(url, dtype=str, header=0)
   df = df.sort_index(ascending=False).fillna('NaN')
+  df["full-text"] = df[["abstract", "introduction", "literature review", "methods", "discussion", "conclusion"]].agg(" - ".join, axis=1)
   return df
 
 df = connect_gsheet()
@@ -54,15 +55,28 @@ text_search = c1.text_input("Search by author, title, or full-text. Separate con
 keyword_list = [keyword.strip() for keyword in text_search.split(";")]
 
 # option to choose
-non_journal = ["author", "title", "full-text", "abstract"]
+list_opt = ["author", "title", "annotation", "abstract", "introduction", "literature review", "methods", "discussion", "conclusion", "full-text"]
 
 # Add options
 format_options = ["All", "Buku Ketenaganukliran", "Buku Non-ketenaganukliran", "Buku Pedoman", "Direktori, annual, yearbook", "Ensiklopedia", "Handbook & manual", "Jurnal", "Kamus", "Kerja Praktik", "Prosiding", "Terbitan Internal", "Tugas Akhir"]
 type_for = c2.selectbox("Type", format_options)
-search_opt = c3.multiselect(
-        "Search fields",
-        non_journal,
-        ["author", "title"])
+if type_for == format_options[0]:
+    search_opt = c3.multiselect(
+             "Search fields",
+             list_opt,
+             ["author", "title"])
+elif type_for == "Tugas Akhir":
+     search_opt = c3.multiselect(
+             "Search fields",
+             list_opt[1:2,4:],
+             ["author", "title"])
+
+else:
+     search_opt = c3.multiselect(
+             "Search fields",
+             list_opt[0:3],
+             ["author", "title"])
+
 
 # filter
 if keyword_list is not None:        
