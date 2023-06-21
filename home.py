@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import re
+from st_pages import hide_pages
 
 #===config===
 st.set_page_config(
@@ -38,7 +39,7 @@ image_dict = {
 st.title('Search4All: Recorded materials')
 
 #Sidebar (menu)
-#st.sidebar.success("Choose menu")
+hide_pages("final")
 
 # Intro text
 st.caption(f"Discover and learn among the more than **{df.shape[0]}** sources available from Search4All.")
