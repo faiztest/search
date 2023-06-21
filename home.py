@@ -4,8 +4,12 @@ import pandas as pd
 import numpy as np
 import re
 
-st.set_page_config(page_title="Pencarian Terpadu", page_icon="https://digilib.polteknuklir.ac.id/perpus/images/default/logo.png", 
-                layout="wide", initial_sidebar_state="expanded")
+#===config===
+st.set_page_config(
+     page_title="Pencarian Terpadu",
+     page_icon="https://digilib.polteknuklir.ac.id/perpus/images/default/logo.png",
+     layout="wide"
+)
 
 # Connect to the Google Sheet
 sheet_id = "1mdvsYlPVQ0Tda35frF1zoznq9TFtOWe0dKkgWDJkiS0"
