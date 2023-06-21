@@ -8,7 +8,7 @@ def cache_clear():
 def main(uploaded_file):
 
     if uploaded_file is not None:
-        with pdfplumber.load(uploaded_file) as pdf:
+        with pdfplumber.open(uploaded_file) as pdf:
             text = ""
             for page in pdf.pages:
                 text += page.extract_text()
@@ -23,5 +23,3 @@ uploaded_file = st.file_uploader("Choose a file", type=['pdf'], on_change=cache_
 if uploaded_file is not None:
     st.subheader("Extracted Text")
     main(uploaded_file)
-    
-
