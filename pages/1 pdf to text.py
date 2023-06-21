@@ -45,4 +45,6 @@ st.header("Upload PDF Files")
 uploaded_files = st.file_uploader("Choose your file", type=['pdf'], on_change=reset_data, accept_multiple_files=True)
 
 if uploaded_files:
+    if not os.path.exists("uploads"):  # Create "uploads" directory if it doesn't exist
+        os.makedirs("uploads")
     main()
