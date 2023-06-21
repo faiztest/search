@@ -1,7 +1,6 @@
 import streamlit as st
-import fitz
+import PyPDF2
 import pandas as pd
-import os
 
 # === config ===
 st.set_page_config(
@@ -15,35 +14,27 @@ def reset_data():
 
 def convert_pdf_to_text(file_path):
     text = ""
-    with fitz.open(file_path) as doc:
-        num_pages = doc.page_count
+    with open(file_path, 'rb') as file:
+        reader = PyPDF2.PdfFileReader(file)
+        num_pages = reader.numPages
         for page_num in range(num_pages):
-            page = doc.load_page(page_num)
-            text += page.get_text()
+            page = reader.getPage(page_num)
+            text += page.extractText()
     return text
 
 def main():
-    if uploaded_files:
-        data = []
-        for file in uploaded_files:
-            file_name = file.name
-            file_path = os.path.join("uploads", file_name)  # Save file locally
-            with open(file_path, "wb") as f:
-                f.write(file.getbuffer())
-            text = convert_pdf_to_text(file_path)
-            data.append({"File Name": file_name, "Text": text})
-            os.remove(file_path)  # Remove the file after processing
-
+    if uploaded_file is not None:
+        file_name = uploaded_file.name
+        text = convert_pdf_to_text(uploaded_file)
+        data = [{"File Name": file_name, "Text": text}]
         df = pd.DataFrame(data)
         st.subheader("Extracted Text")
         st.dataframe(df)
 
 st.title("PDF to Text Converter")
-st.header("Upload PDF Files")
+st.header("Upload PDF File")
 
-uploaded_files = st.file_uploader("Choose your file", type=['pdf'], on_change=reset_data, accept_multiple_files=True)
+uploaded_file = st.file_uploader("Choose a file", type=['pdf'], on_change=reset_data)
 
-if uploaded_files:
-    if not os.path.exists("uploads"):  # Create "uploads" directory if it doesn't exist
-        os.makedirs("uploads")
+if uploaded_file is not None:
     main()
