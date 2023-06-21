@@ -11,6 +11,7 @@ def main(uploaded_file):
             text = ""
             for page in pdf.pages:
                 text += page.extract_text()
+    return text 
 
 
 st.title("PDF to Text Converter")
