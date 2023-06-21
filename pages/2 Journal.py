@@ -5,7 +5,7 @@ def main(uploaded_file):
     st.title("PDF to Text Converter")
 
     if uploaded_file is not None:
-        with pdfplumber.load(uploaded_file) as pdf:
+        with pdfplumber.open(uploaded_file) as pdf:
             text = ""
             for page in pdf.pages:
                 text += page.extract_text()
