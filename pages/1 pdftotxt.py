@@ -12,7 +12,6 @@ st.set_page_config(
 def reset_data():
   st.cache_data.clear()
 
-@st.cache_data
 def convert_pdf_to_text(file_path):
     text = ""
     with open(file_path, 'rb') as file:
@@ -22,11 +21,8 @@ def convert_pdf_to_text(file_path):
             page = reader.getPage(page_num)
             text += page.extractText()
     return text
-    
-@st.cache_data
-def main():
-    st.title("PDF to Text Converter")
 
+def main():
     if uploaded_files:
         data = []
         for file in uploaded_files:
