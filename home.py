@@ -111,4 +111,4 @@ if text_search:
             markdown = f'<a href="{link}" target="_blank"><img src="{image_link}" alt="Click me" width="100%" /></a>'
             st.markdown(markdown, unsafe_allow_html=True)
             st.markdown(f"**{row['author'].strip()}**")
-            st.markdown(f"'Title: ',*{row['title'].strip()}*")
+            st.markdown(f"**Title:** *{row['title'].strip()}*")
