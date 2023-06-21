@@ -22,7 +22,7 @@ st.header("Upload PDF Files")
 uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_files=True, on_change=cache_clear)
 
 if uploaded_files is not None:
-    st.subheader("Extracted Text")
     extracted_data = convert(uploaded_files)
     df = pd.DataFrame(extracted_data)
+    st.subheader("Extracted Text")
     st.data_editor(df)
