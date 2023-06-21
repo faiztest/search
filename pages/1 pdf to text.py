@@ -1,6 +1,8 @@
 import streamlit as st
 import PyPDF2
 import pandas as pd
+import os
+import tempfile
 
 # === config ===
 st.set_page_config(
@@ -25,11 +27,21 @@ def convert_pdf_to_text(file_path):
 def main():
     if uploaded_file is not None:
         file_name = uploaded_file.name
-        text = convert_pdf_to_text(uploaded_file)
+
+        # Save uploaded file to a temporary location
+        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            temp_path = temp_file.name
+            temp_file.write(uploaded_file.getbuffer())
+        
+        text = convert_pdf_to_text(temp_path)
+
         data = [{"File Name": file_name, "Text": text}]
         df = pd.DataFrame(data)
         st.subheader("Extracted Text")
         st.dataframe(df)
+
+        # Remove the temporary file
+        os.remove(temp_path)
 
 st.title("PDF to Text Converter")
 st.header("Upload PDF File")
