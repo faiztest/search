@@ -24,5 +24,6 @@ uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_
 if uploaded_files is not None:
     extracted_data = convert(uploaded_files)
     df = pd.DataFrame(extracted_data)
-    st.subheader("Extracted Text")
-    st.data_editor(df)
+    if df is not None:
+        st.subheader("Extracted Text")
+        st.data_editor(df)
