@@ -38,7 +38,7 @@ image_dict = {
 st.title('Search4All: Recorded materials')
 
 #Sidebar (menu)
-st.sidebar.success("Choose menu")
+#st.sidebar.success("Choose menu")
 
 # Intro text
 st.caption(f"Discover and learn among the more than **{df.shape[0]}** sources available from Search4All.")
