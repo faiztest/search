@@ -86,7 +86,7 @@ if keyword_list is not None:
         for col in search_opt:
             conditions = [df[col].str.contains(pattern, regex=True, flags=re.IGNORECASE) for pattern in patterns]
             column_result = df[np.logical_and.reduce(conditions)]
-            key_df = pd.concat([key_df, column_result])
+            key_df = pd.concat([key_df, column_result]).drop_duplicates()
 
         if type_for != format_options[0]:
             key_df = key_df[key_df['gmd_id'].str.contains(type_for)]
