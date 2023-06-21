@@ -13,11 +13,16 @@ st.set_page_config(
 )
 
 # Connect to the Google Sheet
-sheet_id = "1mdvsYlPVQ0Tda35frF1zoznq9TFtOWe0dKkgWDJkiS0"
-sheet_name = "bibliograph"
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-df = pd.read_csv(url, dtype=str, header=0)
-df = df.sort_index(ascending=False).fillna('NaN')
+st.cache_resource(ttl=3600*3)
+def connect_gsheet():
+  sheet_id = st.secrets.sheet_id
+  sheet_name = st.secrets.sheet_name
+  url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+  df = pd.read_csv(url, dtype=str, header=0)
+  df = df.sort_index(ascending=False).fillna('NaN')
+  return df
+
+df = connect_gsheet()
 
 # image dictionary
 image_dict = {
@@ -37,9 +42,6 @@ image_dict = {
 
 #Title
 st.title('Search4All: Recorded materials')
-
-#Sidebar (menu)
-hide_pages("final")
 
 # Intro text
 st.caption(f"Discover and learn among the more than **{df.shape[0]}** sources available from Search4All.")
