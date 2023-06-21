@@ -5,7 +5,7 @@ import pandas as pd
 def cache_clear():
     st.cache_data.clear()
 
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_data()
 def convert(uploaded_files):
     data = []
     for file in uploaded_files:
