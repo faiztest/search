@@ -4,7 +4,7 @@ import pdfplumber
 def cache_clear():
     st.cache_data.clear()
 
-@st.cache_data
+@st.cache_data(experimental_allow_widgets=True)
 def main(uploaded_file):
 
     if uploaded_file is not None:
