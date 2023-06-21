@@ -7,3 +7,4 @@ st.set_page_config(
 )
 st.write('hello')
 uploaded_files = st.file_uploader("Choose your a file", type=['pdf'], accept_multiple_files=True)
+uploaded_file = st.file_uploader("Choose a file")
