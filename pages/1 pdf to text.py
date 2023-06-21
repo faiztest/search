@@ -1,5 +1,5 @@
 import streamlit as st
-import PyPDF2
+import fitz
 import pandas as pd
 import os
 
@@ -15,12 +15,11 @@ def reset_data():
 
 def convert_pdf_to_text(file_path):
     text = ""
-    with open(file_path, 'rb') as file:
-        reader = PyPDF2.PdfFileReader(file)
-        num_pages = reader.numPages
+    with fitz.open(file_path) as doc:
+        num_pages = doc.page_count
         for page_num in range(num_pages):
-            page = reader.getPage(page_num)
-            text += page.extractText()
+            page = doc.load_page(page_num)
+            text += page.get_text()
     return text
 
 def main():
