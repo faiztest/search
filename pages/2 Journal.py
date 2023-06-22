@@ -75,7 +75,7 @@ if keyword_list_j is not None:
             key_df_j = key_df_j[key_df_j['journal_title'].str.contains(journalname)]
 
 # creating card(s)
-N_cards_per_row = 4
+N_cards_per_row = 5
 if text_search:
     for n_row, row in key_df_j.reset_index().iterrows():
         i = n_row%N_cards_per_row
