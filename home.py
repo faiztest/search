@@ -41,7 +41,7 @@ image_dict = {
 }
 
 #Title
-st.title('Search4All: Recorded materials')
+st.title('Search4All: Collections')
 
 # Intro text
 st.caption(f"Discover and learn among the more than **{df.shape[0]}** sources available from Search4All.")
