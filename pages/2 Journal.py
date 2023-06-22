@@ -27,17 +27,17 @@ df = connect_gsheet()
 
 # image dictionary
 image_dict = {
-  "Atom Indonesia": "https://github.com/faizhalas/Search4All/blob/main/images/bnuklir.png?raw=true",
-  "EKSPLORIUM": "https://github.com/faizhalas/Search4All/blob/main/images/pedoman.png?raw=true",
-  "GANENDRA": "https://github.com/faizhalas/Search4All/blob/main/images/diranuyear.png?raw=true",
-  "Jurnal Pengembangan Energi Nuklir": "https://github.com/faizhalas/Search4All/blob/main/images/kamus.png?raw=true",  
-  "Jurnal Sains dan Teknologi Nuklir Indonesia": "https://github.com/faizhalas/Search4All/blob/main/images/hanmanu.png?raw=true",
-  "Jurnal Teknologi Reaktor Nuklir Tri Dasa Mega": "https://github.com/faizhalas/Search4All/blob/main/images/bnonnuklir.png?raw=true",
-  "URANIA": "https://github.com/faizhalas/Search4All/blob/main/images/ensiklopedia.png?raw=true"
+  "Atom Indonesia": "https://github.com/faizhalas/Search4All/blob/main/images/journal/atom.png?raw=true",
+  "EKSPLORIUM": "https://github.com/faizhalas/Search4All/blob/main/images/journal/eksplorium.jpg?raw=true",
+  "GANENDRA": "https://github.com/faizhalas/Search4All/blob/main/images/journal/ganendra.png?raw=true",
+  "Jurnal Pengembangan Energi Nuklir": "https://github.com/faizhalas/Search4All/blob/main/images/journal/jpen.jpg?raw=true",  
+  "Jurnal Sains dan Teknologi Nuklir Indonesia": "https://github.com/faizhalas/Search4All/blob/main/images/journal/jstni.jpg?raw=true",
+  "Jurnal Teknologi Reaktor Nuklir Tri Dasa Mega": "https://github.com/faizhalas/Search4All/blob/main/images/journal/tridasa.jpg?raw=true",
+  "URANIA": "https://github.com/faizhalas/Search4All/blob/main/images/journal/urania.jpg?raw=true"
 }
 
 #Title
-st.title('Search4All: Recorded materials')
+st.title('Search4All: Journal')
 
 # Intro text
 st.caption(f"Discover and learn among the more than **{df.shape[0]}** sources available from Search4All.")
@@ -50,27 +50,15 @@ text_search = c1.text_input("Search by author, title, or full-text. Separate con
 keyword_list_j = [keyword.strip() for keyword in text_search.split(";")]
 
 # option to choose
-part_opt = ["annotation", "author", "title", "abstract", "introduction", "literature review", "methods", "discussion", "conclusion", "full-text"]
+part_opt = ["author", "title", "abstract", "introduction", "literature review", "methods", "discussion", "conclusion", "full-text"]
 
 # Add options
 s_titles = ["All", "Atom Indonesia", "EKSPLORIUM", "GANENDRA", "Jurnal Pengembangan Energi Nuklir", "Jurnal Sains dan Teknologi Nuklir Indonesia", "Jurnal Teknologi Reaktor Nuklir Tri Dasa Mega", "URANIA"]
 journalname = c2.selectbox("Source Titles", s_titles)
-if journalname == s_titles[0]:
-    search_opt = c3.multiselect(
-             "Search fields",
-             part_opt,
-             ["author", "title"])
-elif journalname == "Tugas Akhir":
-     search_opt = c3.multiselect(
-             "Search fields",
-             part_opt[1:],
-             ["author", "title"])
-
-else:
-     search_opt = c3.multiselect(
-             "Search fields",
-             part_opt[0:3],
-             ["author", "title"])
+search_opt = c3.multiselect(
+     "Search fields",
+     part_opt,
+     ["author", "title"])
 
 
 # filter
