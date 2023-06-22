@@ -91,7 +91,7 @@ if keyword_list is not None:
             key_df = key_df[key_df['gmd_id'].str.contains(type_for)]
 
 # creating card(s)
-N_cards_per_row = 4
+N_cards_per_row = 5
 if text_search:
     for n_row, row in key_df.reset_index().iterrows():
         i = n_row%N_cards_per_row
