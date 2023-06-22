@@ -18,7 +18,7 @@ st.title("PDF to Text Converter")
 st.header("Upload PDF Files")
 
 uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_files=True)
-text_search = text_input("Split your PDFs into parts.", "Separate words -cAsE sEnSiTiVe- by semicolons (;)")
+text_search = st.text_input("Split your PDFs into parts.", "Separate words (cAsE sEnSiTiVe) by semicolons (;)")
 word_list = [keyword.strip() for keyword in text_search.split(";")]
 st.write(word_list)
 
