@@ -33,7 +33,6 @@ image_dict = {
   "Direktori, annual, yearbook": "https://github.com/faizhalas/Search4All/blob/main/images/diranuyear.png?raw=true",
   "Ensiklopedia": "https://github.com/faizhalas/Search4All/blob/main/images/ensiklopedia.png?raw=true",
   "Handbook & manual": "https://github.com/faizhalas/Search4All/blob/main/images/hanmanu.png?raw=true",
-  "Jurnal": "https://github.com/faizhalas/Search4All/blob/main/images/jurnal.png?raw=true",
   "Kamus": "https://github.com/faizhalas/Search4All/blob/main/images/kamus.png?raw=true",
   "Kerja Praktik": "https://github.com/faizhalas/Search4All/blob/main/images/kp.png?raw=true",
   "Prosiding": "https://github.com/faizhalas/Search4All/blob/main/images/pros.png?raw=true",
@@ -58,7 +57,7 @@ keyword_list = [keyword.strip() for keyword in text_search.split(";")]
 list_opt = ["annotation", "author", "title", "abstract", "introduction", "literature review", "methods", "discussion", "conclusion", "full-text"]
 
 # Add options
-format_options = ["All", "Buku Ketenaganukliran", "Buku Non-ketenaganukliran", "Buku Pedoman", "Direktori, annual, yearbook", "Ensiklopedia", "Handbook & manual", "Jurnal", "Kamus", "Kerja Praktik", "Prosiding", "Terbitan Internal", "Tugas Akhir"]
+format_options = ["All", "Buku Ketenaganukliran", "Buku Non-ketenaganukliran", "Buku Pedoman", "Direktori, annual, yearbook", "Ensiklopedia", "Handbook & manual", "Kamus", "Kerja Praktik", "Prosiding", "Terbitan Internal", "Tugas Akhir"]
 type_for = c2.selectbox("Type", format_options)
 if type_for == format_options[0]:
     search_opt = c3.multiselect(
