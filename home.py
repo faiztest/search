@@ -8,7 +8,7 @@ from st_pages import hide_pages
 #===config===
 st.set_page_config(
      page_title="Pencarian Terpadu",
-     page_icon="https://digilib.polteknuklir.ac.id/perpus/images/default/logo.png",
+     page_icon="https://github.com/faizhalas/Search4All/blob/main/images/logo.png?raw=true",
      layout="wide"
 )
 
@@ -91,7 +91,7 @@ if keyword_list is not None:
             key_df = key_df[key_df['gmd_id'].str.contains(type_for)]
 
 # creating card(s)
-N_cards_per_row = 5
+N_cards_per_row = 4
 if text_search:
     for n_row, row in key_df.reset_index().iterrows():
         i = n_row%N_cards_per_row
