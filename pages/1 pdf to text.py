@@ -81,6 +81,6 @@ if st.button("Convert", on_click=clear_data):
            # st.error('Error: Please double-check the words that are used as splitter.')
             #sys.exit(1)
          
-    if not result_df.empty:
+    #if not result_df.empty:
         st.subheader("Extracted Text")
         st.dataframe(result_df)
