@@ -68,7 +68,7 @@ uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_
 
 rmv = st.text_input("Remove certain text before 'your text'.")
 
-text_search = st.text_input("Split your PDFs into parts. Separate words (cAsE sEnSiTiVe) by semicolons (;)")
+text_search = st.text_input("Split your PDFs into parts. Separate words (cAsE sEnSiTiVe) by semicolons (;)", "INTRODUCTION")
 word_list = [keyword.strip() for keyword in text_search.split(";")]
 
 if st.button("Convert", on_click=clear_data):
