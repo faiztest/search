@@ -79,9 +79,3 @@ if st.button("Convert", on_click=clear_data):
          result_df = split(rdf)
          st.subheader("Extracted Text")
          st.dataframe(result_df)
-    #except ValueError:
-           # st.error('Error: Please double-check the words that are used as splitter.')
-            #sys.exit(1)
-         
-    #if not result_df.empty:
-         
