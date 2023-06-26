@@ -72,11 +72,14 @@ text_search = st.text_input("Split your PDFs into parts. Separate words (cAsE sE
 word_list = [keyword.strip() for keyword in text_search.split(";")]
 
 if st.button("Convert", on_click=clear_data):
+    try:
          df = convert(uploaded_files)
-         st.write(df)
          rdf = remove_before(df)
-         st.write(rdf)
          result_df = split(rdf)
-         st.write(result_df)
-         st.subheader("Extracted Text")
-         st.dataframe(result_df)
+    except ValueError:
+            st.error('Error: Please double-check the words that are used as splitter.')
+            sys.exit(1)
+         
+    if not result_df.empty:
+        st.subheader("Extracted Text")
+        st.dataframe(result_df)
