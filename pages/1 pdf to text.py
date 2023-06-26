@@ -73,7 +73,6 @@ text_search = st.text_input("Split your PDFs into parts. Separate words (cAsE sE
 word_list = [keyword.strip() for keyword in text_search.split(";")]
 
 if st.button("Convert", on_click=clear_data):
-    try:
          df = convert(uploaded_files)
          rdf = remove_before(df)
          result_df = split(rdf)
