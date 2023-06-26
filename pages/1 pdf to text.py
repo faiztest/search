@@ -42,6 +42,7 @@ def convert(uploaded_files):
                  
         data.append({"File Name": file.name, "Text": text})
     df = pd.DataFrame(data).replace(r'\n',' ', regex=True)
+    st.write(df)
     return df
 
 @st.cache_data(ttl=3600)
