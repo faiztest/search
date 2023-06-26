@@ -24,19 +24,20 @@ def convert(uploaded_files):
     all_content = [] 
     for file in uploaded_files:
         with pdfplumber.open(file) as pdf:
-            width = page.width
-            height = page.height
-     
-            # Crop pages
-            left_bbox = (x0*float(width), y0*float(height), x1*float(width), y1*float(height))
-            page_crop = page.crop(bbox=left_bbox)
-            left_text = page_crop.extract_text()
-     
-            left_bbox = (0.5*float(width), y0*float(height), 1*float(width), y1*float(height))
-            page_crop = page.crop(bbox=left_bbox)
-            right_text = page_crop.extract_text()
-            page_context = '\n'.join([left_text, right_text])
-            all_content.append(page_context)
+            for i, page in enumerate(pdf.pages):
+                 width = page.width
+                 height = page.height
+          
+                 # Crop pages
+                 left_bbox = (x0*float(width), y0*float(height), x1*float(width), y1*float(height))
+                 page_crop = page.crop(bbox=left_bbox)
+                 left_text = page_crop.extract_text()
+          
+                 left_bbox = (0.5*float(width), y0*float(height), 1*float(width), y1*float(height))
+                 page_crop = page.crop(bbox=left_bbox)
+                 right_text = page_crop.extract_text()
+                 page_context = '\n'.join([left_text, right_text])
+                 all_content.append(page_context)
 
              
             text = ""
