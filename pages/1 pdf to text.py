@@ -73,7 +73,7 @@ word_list = [keyword.strip() for keyword in text_search.split(";")]
 
 have_column = st.checkbox('PDF has 2 columns')
 if have_column:
-     x1 = st.number_input('Distance of right side of character from left side of page.', min_value=0, max_value=1, value=0.5, step=None)
+     x1 = st.number_input('Distance of right side of character from left side of page.', min_value=0.0, max_value=1.0, value=0.5)
 
 if st.button("Convert", on_click=clear_data):
     try:
