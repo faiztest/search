@@ -21,8 +21,8 @@ def convert(uploaded_files):
     y1 = 1  # Distance of top of character from bottom of page.
  
     data = []
-    all_content = [] 
     for file in uploaded_files:
+        all_content = [] 
         with pdfplumber.open(file) as pdf:
             for i, page in enumerate(pdf.pages):
                  width = page.width
