@@ -16,7 +16,7 @@ def clear_data():
 @st.cache_data(ttl=3600, experimental_allow_widgets=True)
 def convert(uploaded_files):
     x0 = 0    # Distance of left side of character from left side of page.
-    x1 = 0.5  # Distance of right side of character from left side of page.
+    #x1 = 0.5  # Distance of right side of character from left side of page.
     y0 = 0  # Distance of bottom of character from bottom of page.
     y1 = 1  # Distance of top of character from bottom of page.
  
@@ -70,6 +70,10 @@ rmv = st.text_input("Remove certain text before 'your text'.")
 
 text_search = st.text_input("Split your PDFs into parts. Separate words (cAsE sEnSiTiVe) by semicolons (;)", "INTRODUCTION")
 word_list = [keyword.strip() for keyword in text_search.split(";")]
+
+have_column = st.checkbox('PDF has 2 columns')
+if have_column:
+     x1 = st.number_input('Distance of right side of character from left side of page.', min_value=0, max_value=1, value=0.5, step=None)
 
 if st.button("Convert", on_click=clear_data):
     try:
