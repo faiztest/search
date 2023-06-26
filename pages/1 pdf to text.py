@@ -77,10 +77,11 @@ if st.button("Convert", on_click=clear_data):
          df = convert(uploaded_files)
          rdf = remove_before(df)
          result_df = split(rdf)
+         st.subheader("Extracted Text")
+         st.dataframe(result_df)
     #except ValueError:
            # st.error('Error: Please double-check the words that are used as splitter.')
             #sys.exit(1)
          
     #if not result_df.empty:
-         st.subheader("Extracted Text")
-         st.dataframe(result_df)
+         
