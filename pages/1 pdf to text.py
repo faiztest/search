@@ -42,8 +42,6 @@ def convert(uploaded_files):
                  
         data.append({"File Name": file.name, "Text": text})
     df = pd.DataFrame(data).replace(r'\n',' ', regex=True)
-    st.write(df)
-    st.write(df.info())
     return df
 
 @st.cache_data(ttl=3600)
@@ -75,7 +73,10 @@ word_list = [keyword.strip() for keyword in text_search.split(";")]
 
 if st.button("Convert", on_click=clear_data):
          df = convert(uploaded_files)
+         st.write(df)
          rdf = remove_before(df)
+         st.write(rdf)
          result_df = split(rdf)
+         st.write(result_df)
          st.subheader("Extracted Text")
          st.dataframe(result_df)
