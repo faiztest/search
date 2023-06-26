@@ -88,7 +88,7 @@ with col1:
      rmv = st.text_input("Remove certain text before 'your text'.")
 with col2:
      rmv_text = st.text_input("Remove certain text on your PDF. Separate by semicolons (;).")
-     remove_list = [keyword.strip() for keyword in del_text.split(";")]
+     remove_list = [keyword.strip() for keyword in rmv_text.split(";")]
 
 
 text_search = st.text_input("Split your PDFs into parts. Separate words (cAsE sEnSiTiVe) by semicolons (;)", "INTRODUCTION")
