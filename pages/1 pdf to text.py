@@ -38,11 +38,8 @@ def convert(uploaded_files):
                  right_text = page_crop.extract_text()
                  page_context = '\n'.join([left_text, right_text])
                  all_content.append(page_context)
-
-             
-            text = ""
-            for page in all_content.pages:
-                text += page.extract_text()
+                 text = '\n'.join(all_content)
+                 
         data.append({"File Name": file.name, "Text": text})
     df = pd.DataFrame(data).replace(r'\n',' ', regex=True)
     return df
