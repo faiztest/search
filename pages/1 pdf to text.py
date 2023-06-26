@@ -104,7 +104,8 @@ if st.button("Convert", on_click=clear_data):
               df = convert_col(uploaded_files)
          else:
               df = convert(uploaded_files)
-         rdf = remove_before(df).remove_sen(df)
+         rdf = remove_before(df)
+         rdf = remove_sen(rdf)
          result_df = split(rdf)
     except ValueError:
             st.error('Error: Please double-check the words that are used as splitter.')
